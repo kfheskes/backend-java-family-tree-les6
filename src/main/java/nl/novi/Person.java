@@ -12,9 +12,9 @@ public class Person {
     private int age;
     private Person mother;
     private Person father;
-    private List<Person> siblings = new ArrayList<>();
+    private List<Person> siblings;
     private List<Person> children;
-    private List<Person> pets = new ArrayList<>();
+    private List<Person> pets;
 
     public Person(String name, String lastName, int age, char sex){
         this.name = name;
@@ -131,12 +131,26 @@ public class Person {
             parent.setChildren(children);
         }
 
-        public void addPet(){
+        public void addPet( Person person, Pet pet){
+        List<Person> pets = new ArrayList<>();
+            if(person.getPets() != null){
+                for (Person owner: pet.getOwner().getPets() ) {
+
+                }
+            }
 
         }
 
-        public void addSibling(){
+        public void addSibling(Person me, Person sibling){
+            List<Person> siblings = new ArrayList<>();
+            if (me.getSiblings() != null){
+                for ( Person person : me.getSiblings()) {
+                        siblings.add(person);
+                }
+            }
+            siblings.add(sibling);
 
+            me.setSiblings(siblings);
         }
 
         public void getGrandChildren(){
