@@ -12,6 +12,8 @@ public class Main {
         Pet petMother = new Pet("Pando",3,"Kruising poedel en shih tzu");
         Pet petFather = new Pet("Kenzo", 2, "vuilnisbak");
 
+        mother.addPet(mother, petMother);
+        father.addPet(father, petFather);
 
         sabina.addParents(father,mother,sabina);
         sharenda.addParents(father,mother,sharenda);
