@@ -3,7 +3,7 @@ package nl.novi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person {
+public class Person  {
 
     private String name;
     private String middleName;
@@ -153,10 +153,6 @@ public class Person {
         siblings.add(sibling);
 
         me.setSiblings(siblings);
-    }
-
-    public List<Person> getGrandChildren() {
-        return grandChildren;
     }
 
     public void setGrandChildren(List<Person> grandChildren) {
