@@ -45,9 +45,6 @@ public class Pet {
         return species;
     }
 
-    public void setSpecies(){
-        this.species = species;
-    }
 
 
 }
