@@ -3,7 +3,7 @@ package nl.novi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Person  {
+public class Person {
 
     private String name;
     private String middleName;
@@ -16,6 +16,7 @@ public class Person  {
     private List<Person> children;
     private List<Pet> pets;
 
+    private List<Pet> petsGrandChildren;
     private List<Person> grandChildren;
 
     public Person(String name, String lastName, int age, char sex) {
@@ -160,7 +161,7 @@ public class Person  {
     }
 
 
-     public List<Person> getGrandChildren(Person parent) {
+    public List<Person> getGrandChildren(Person parent) {
         List<Person> grandChildren = new ArrayList<>();
         if (parent.getChildren() != null)
             for (Person children : parent.getChildren()) {
@@ -171,14 +172,47 @@ public class Person  {
                     }
                 }
             }
-                return grandChildren;
+        return grandChildren;
 
     }
 
-//    public List<Pet> getGrandChildrenPets (Pet grandChildPet){
-//        List<Pet> grandChildrenPets = new ArrayList<>();
-//        if (grandChildPet.getPets)
-//    }
+    public List<Pet> getPetsGrandChildren(Pet pet) {
+        List<Pet> petGrandChildren = new ArrayList<>();
+        if (pet.getOwner() != null)
+            for (Pet childPet : pet.getOwner().getPets()) {
+                if (childPet.getOwner() != null) {
+                    for (Pet grandChild : childPet.getOwner().getPets()) {
+                        petGrandChildren.add(grandChild);
+                    }
+                }
+            }
+        return petsGrandChildren;
+    }
 
+    public void setPetsGrandChildren(List<Pet> petsGrandChildren) {
+        this.petsGrandChildren = petsGrandChildren;
+    }
 
+    public List<Person> getNiecesAndNephews(Person person) {
+        List<Person> niecesAndNephews = new ArrayList<>();
+
+        List<Person> siblings = person.getSiblings();
+
+        if (siblings != null) {
+            for (Person sibling : siblings) {
+                List<Person> niecesAndNephewsOfSibling = sibling.getChildren();
+                if (niecesAndNephewsOfSibling != null) {
+                    for (Person nieceOrNephew : niecesAndNephewsOfSibling) {
+                        niecesAndNephews.add(nieceOrNephew);
+                    }
+                }
+            }
+        }
+        return niecesAndNephews;
+    }
 }
+
+
+
+
+
